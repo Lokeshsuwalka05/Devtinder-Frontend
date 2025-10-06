@@ -4,13 +4,18 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../features/user/userSlice";
 import { useNavigate } from "react-router";
 import { BASE_URL } from "../utills/constants";
+import toast from "react-hot-toast";
 const Login = () => {
   const [emailId, setEmail] = useState("lokeshsuwalka2002@gmail.com");
   const [password, setPassword] = useState("Lokesh@123");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = async () => {
     try {
+      // prevent multiple clicks
+      if (loading) return;
+      setLoading(true); // disable button
       const response = await axios.post(
         BASE_URL + "/login",
         {
@@ -23,8 +28,12 @@ const Login = () => {
       );
       dispatch(addUser(response.data.loggedInUser));
       navigate("/");
+      toast.success(response.data.message, { id: "loginToast" });
     } catch (err) {
+      toast.error(err.response.data, { id: "loginToast" });
       console.log(err);
+    } finally {
+      setLoading(false); // enable button again
     }
   };
   return (

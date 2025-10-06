@@ -5,9 +5,11 @@ import { Provider } from "react-redux";
 import { appStore } from "./app/store";
 import Feed from "./components/Feed";
 import Profile from "./components/Profile";
+import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
     <>
+      <Toaster position="top-right" />
       <Provider store={appStore}>
         <BrowserRouter>
           <Routes>
