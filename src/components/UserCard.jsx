@@ -1,0 +1,29 @@
+const UserCard = ({ user }) => {
+  const { firstName, lastName, photoUrl, age, gender, about, skills } = user;
+  return (
+    user && (
+      <div className="card bg-base-300 w-72 shadow-sm m-auto mt-5 mb-28">
+        <figure className="mt-3 ">
+          <img
+            className="h-40 rounded-full border-4 border-white"
+            src={photoUrl}
+            alt="User Photo"
+          />
+        </figure>
+        <div className="card-body p-3 h-44">
+          <h2 className="card-title">
+            {firstName.toUpperCase() + " " + lastName.toUpperCase()}
+          </h2>
+          <p className="font-semibold text-gray-600">{age + "," + gender}</p>
+          <p className="font-semibold text-gray-600">{skills}</p>
+          <p className="font-semibold text-gray-600">{about}</p>
+          <div className="card-actions justify-between">
+            <button className="btn btn-secondary">Interested</button>
+            <button className="btn btn-primary">Ignored</button>
+          </div>
+        </div>
+      </div>
+    )
+  );
+};
+export default UserCard;
