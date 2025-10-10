@@ -128,7 +128,7 @@ const EditProfile = ({ user }) => {
         </div>
       </div>
       <div className="my-auto mx-auto">
-        <img src={curved_arrow} className="w-32 "></img>
+        <img src={curved_arrow} className="w-32"></img>
       </div>
       <div className="">
         <UserCard

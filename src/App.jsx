@@ -7,6 +7,7 @@ import Feed from "./components/Feed";
 import Profile from "./components/Profile";
 import { Toaster } from "react-hot-toast";
 import Connections from "./components/Connections";
+import RequestReceived from "./components/requestReceived";
 const App = () => {
   return (
     <>
@@ -19,6 +20,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/connections" element={<Connections />} />
+              <Route path="/requests" element={<RequestReceived />} />
             </Route>
           </Routes>
         </BrowserRouter>
