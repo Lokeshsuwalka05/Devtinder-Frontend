@@ -57,9 +57,7 @@ const Feed = () => {
   return (
     <>
       {feed && feed.length > 0 ? (
-        feed.map((user) => {
-          return <UserCard key={user._id} user={user} />;
-        })
+        <UserCard key={feed[0]._id} user={feed[0]} />
       ) : (
         <div className="flex justify-center mt-24">
           <span className="loading loading-spinner loading-xl"></span>
