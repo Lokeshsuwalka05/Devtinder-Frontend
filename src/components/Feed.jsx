@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { BASE_URL } from "../utills/constants";
 import axios from "axios";
 import UserCard from "./UserCard";
@@ -6,50 +6,67 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../features/feed/feedSlice";
 
 const Feed = () => {
-  const [pageNo, setPageNo] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const feed = useSelector((store) => store.feed);
-  console.log(feed);
   const dispatch = useDispatch();
   const limit = 5;
+  const pageRef = useRef(0);
+
   const getFeed = async () => {
+    if (isLoading || !hasMore) return;
+
     try {
+      setIsLoading(true);
+      pageRef.current += 1;
       const res = await axios.get(
-        `${BASE_URL}/feed?page=${pageNo}&limit=${limit}`,
+        `${BASE_URL}/feed?page=${pageRef.current}&limit=${limit}`,
         {
           withCredentials: true,
         }
       );
       const users = res?.data?.feedOfUser || [];
+
       if (users.length === 0) {
         setHasMore(false);
         return;
       }
+
       dispatch(addFeed(users));
     } catch (e) {
       console.error(e);
+    } finally {
+      setIsLoading(false);
     }
   };
-  useEffect(() => {
-    getFeed();
-  }, [pageNo]);
 
+  // Initial load - only when feed is null/empty and we have more data
   useEffect(() => {
-    if (feed && feed.length <= 1 && hasMore) {
-      setPageNo((prev) => prev + 1);
+    if ((feed == null || feed.length === 0) && hasMore && !isLoading) {
+      getFeed();
     }
   }, [feed]);
-  if (!hasMore && feed.length == 0) {
-    return <h1>No User Found</h1>;
+
+  // No more data and feed is empty
+  if (!hasMore && (!feed || feed.length === 0)) {
+    return (
+      <h1 className="text-center mt-10 text-xl font-semibold">No User Found</h1>
+    );
   }
-  return feed && feed.length > 0 ? (
+
+  return (
     <>
-      <UserCard user={feed[0]} />
+      {feed && feed.length > 0 ? (
+        feed.map((user) => {
+          return <UserCard key={user._id} user={user} />;
+        })
+      ) : (
+        <div className="flex justify-center mt-24">
+          <span className="loading loading-spinner loading-xl"></span>
+        </div>
+      )}
     </>
-  ) : (
-    <div className="flex justify-center">
-      <span className="loading loading-spinner loading-xl "></span>
-    </div>
   );
 };
+
 export default Feed;
