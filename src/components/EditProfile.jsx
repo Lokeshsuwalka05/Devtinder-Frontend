@@ -38,102 +38,111 @@ const EditProfile = ({ user }) => {
   };
 
   return (
-    <div className="grid grid-cols-[2fr_1fr_2fr] mb-12">
-      <div className="card w-96 bg-base-300 card-md shadow-sm ml-5 top-5 mb-14">
-        <div className="card-body">
-          <h2 className="card-title">Edit Profile</h2>
-          <div className="flex gap-4">
-            <fieldset className="fieldset w-6/12">
-              <legend className="fieldset-legend">FirstName</legend>
-              <input
-                type="text"
-                className="input"
-                placeholder="Type here"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
+    <div className="mb-32">
+      <p className="text-center text-gray-800 font-medium mb-6 text-xl">
+        Please update your profile first to connect with other awesome
+        developers🧑‍💻!
+      </p>
+      <div className="grid grid-cols-[2fr_1fr_2fr] mb-12">
+        <div className="card w-96 bg-base-300 card-md shadow-sm ml-5 top-5">
+          <div className="card-body">
+            <h2 className="card-title">Edit Profile</h2>
+            <div className="flex gap-4">
+              <fieldset className="fieldset w-6/12">
+                <legend className="fieldset-legend">FirstName</legend>
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Type here"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </fieldset>
+              <fieldset className="fieldset w-6/12">
+                <legend className="fieldset-legend">LastName</legend>
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Type here"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </fieldset>
+            </div>
+            <div className="flex gap-4">
+              <fieldset className="fieldset w-6/12">
+                <legend className="fieldset-legend">Age</legend>
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Type here"
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                />
+              </fieldset>
+              <fieldset className="fieldset w-6/12">
+                <legend className="fieldset-legend">Gender</legend>
+                <select
+                  className="select select-bordered w-full"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                >
+                  <option value="">Select Gender</option>
+                  <option value="male">male</option>
+                  <option value="female">female</option>
+                  <option value="others">others</option>
+                </select>
+              </fieldset>
+            </div>
+            <div className="flex gap-4">
+              <fieldset className="fieldset w-6/12">
+                <legend className="fieldset-legend">Skills</legend>
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Type here"
+                  value={skills}
+                  onChange={(e) => setSkills(e.target.value)}
+                />
+              </fieldset>
+              <fieldset className="fieldset w-6/12">
+                <legend className="fieldset-legend">PhotoUrl</legend>
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Type here"
+                  value={photoUrl}
+                  onChange={(e) => setPhotoUrl(e.target.value)}
+                />
+              </fieldset>
+            </div>
+            <fieldset className="fieldset w-full">
+              <legend className="fieldset-legend">About</legend>
+              <textarea
+                className="textarea w-full"
+                placeholder="Bio"
+                value={about}
+                onChange={(e) => setAbout(e.target.value)}
+              ></textarea>
             </fieldset>
-            <fieldset className="fieldset w-6/12">
-              <legend className="fieldset-legend">LastName</legend>
-              <input
-                type="text"
-                className="input"
-                placeholder="Type here"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </fieldset>
-          </div>
-          <div className="flex gap-4">
-            <fieldset className="fieldset w-6/12">
-              <legend className="fieldset-legend">Age</legend>
-              <input
-                type="text"
-                className="input"
-                placeholder="Type here"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-              />
-            </fieldset>
-            <fieldset className="fieldset w-6/12">
-              <legend className="fieldset-legend">Gender</legend>
-              <select
-                className="select select-bordered w-full"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              >
-                <option value="">Select Gender</option>
-                <option value="male">male</option>
-                <option value="female">female</option>
-                <option value="others">others</option>
-              </select>
-            </fieldset>
-          </div>
-          <div className="flex gap-4">
-            <fieldset className="fieldset w-6/12">
-              <legend className="fieldset-legend">Skills</legend>
-              <input
-                type="text"
-                className="input"
-                placeholder="Type here"
-                value={skills}
-                onChange={(e) => setSkills(e.target.value)}
-              />
-            </fieldset>
-            <fieldset className="fieldset w-6/12">
-              <legend className="fieldset-legend">PhotoUrl</legend>
-              <input
-                type="text"
-                className="input"
-                placeholder="Type here"
-                value={photoUrl}
-                onChange={(e) => setPhotoUrl(e.target.value)}
-              />
-            </fieldset>
-          </div>
-          <fieldset className="fieldset w-full">
-            <legend className="fieldset-legend">About</legend>
-            <textarea
-              className="textarea w-full"
-              placeholder="Bio"
-              value={about}
-              onChange={(e) => setAbout(e.target.value)}
-            ></textarea>
-          </fieldset>
-          <div className="justify-center card-actions">
-            <button className="btn btn-primary" onClick={handleUpdate}>
-              Update Profile
-            </button>
+            <div className="justify-center card-actions">
+              <button className="btn btn-primary" onClick={handleUpdate}>
+                Update Profile
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="my-auto mx-auto">
-        <img src={curved_arrow} className="w-32"></img>
-      </div>
-      <div className="">
-        <UserCard
-          user={{ firstName, lastName, age, about, skills, photoUrl, gender }}
-        />
+        <div className="my-auto mx-auto">
+          <img src={curved_arrow} className="w-32"></img>
+        </div>
+        <div className="">
+          <p className="text-center">
+            Here’s how your profile looks to other developers
+          </p>
+          <UserCard
+            user={{ firstName, lastName, age, about, skills, photoUrl, gender }}
+          />
+        </div>
       </div>
     </div>
   );
