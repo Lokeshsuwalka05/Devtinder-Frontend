@@ -8,41 +8,57 @@ const UserCard = ({ user }) => {
     user;
   const dispatch = useDispatch();
   const handleClick = async (status, userId) => {
-    await axios.post(
-      `${BASE_URL}/request/send/${status}/${userId}`,
-      {},
-      { withCredentials: true }
-    );
-    dispatch(removeFeed(userId));
+    try {
+      await axios.post(
+        `${BASE_URL}/request/send/${status}/${userId}`,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeFeed(userId));
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     user && (
-      <div className="card bg-base-300 w-72 shadow-sm m-auto mt-5 mb-28">
-        <figure className="mt-3 ">
-          <img
-            className="h-40 rounded-full border-4 border-white"
-            src={photoUrl}
-            alt="User Photo"
-          />
-        </figure>
-        <div className="card-body p-3 h-44">
-          <h2 className="card-title">
-            {firstName.toUpperCase() + " " + lastName.toUpperCase()}
-          </h2>
-          <p className="font-semibold text-gray-600">{age + "," + gender}</p>
-          <p className="font-semibold text-gray-600">{skills}</p>
-          <p className="font-semibold text-gray-600">{about}</p>
-          <div className="card-actions justify-between">
-            <button
-              className="btn btn-secondary"
-              onClick={() => handleClick("interested", _id)}
-            >
-              Interested
-            </button>
-            <button className="btn btn-primary">Ignored</button>
+      <>
+        <div className="card bg-base-300 w-72 shadow-sm m-auto mt-5">
+          <figure className="mt-3 ">
+            <img
+              className="h-40 rounded-full border-4 border-white"
+              src={photoUrl}
+              alt="User Photo"
+            />
+          </figure>
+          <div className="card-body p-3 min-h-44">
+            <h2 className="card-title">
+              {firstName.toUpperCase() + " " + lastName.toUpperCase()}
+            </h2>
+
+            <p className="font-semibold text-gray-600">
+              {age && <span>{age}</span>}
+              {gender && <span>{"," + gender}</span>}
+            </p>
+
+            <p className="font-semibold text-gray-600">{skills}</p>
+            <p className="font-semibold text-gray-600 break-words">{about}</p>
+            <div className="card-actions justify-between">
+              <button
+                className="btn btn-secondary"
+                onClick={() => handleClick("interested", _id)}
+              >
+                Interested
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={() => handleClick("ignored", _id)}
+              >
+                Ignored
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     )
   );
 };
