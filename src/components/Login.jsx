@@ -43,7 +43,6 @@ const Login = () => {
   };
   const handleSignup = async () => {
     try {
-      setError("");
       const res = await axios.post(
         `${BASE_URL}/signup`,
         { firstName, lastName, emailId, password },
@@ -109,11 +108,10 @@ const Login = () => {
         )}
         <p
           className="text-blue-600 hover:underline cursor-pointer"
-          onClick={() =>
-            setIsLoginForm((prev) => {
-              return !prev;
-            })
-          }
+          onClick={() => {
+            setIsLoginForm((prev) => !prev);
+            setError("");
+          }}
         >
           {isLoginForm ? "New User? SignUp Here" : "Existing User? Login Here"}
         </p>
