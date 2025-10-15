@@ -6,6 +6,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../features/user/userSlice";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
@@ -15,6 +16,7 @@ const EditProfile = ({ user }) => {
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
   const [gender, setGender] = useState(user.gender);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleUpdate = async () => {
     try {
       const res = await axios.patch(
@@ -32,6 +34,7 @@ const EditProfile = ({ user }) => {
       );
       dispatch(addUser(res?.data?.updatedUserData));
       toast.success(res?.data?.message);
+      navigate("/");
     } catch (e) {
       console.error(e);
     }
