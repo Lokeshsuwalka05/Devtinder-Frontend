@@ -34,28 +34,37 @@ const UserCard = ({ user }) => {
             <h2 className="card-title">
               {firstName.toUpperCase() + " " + lastName.toUpperCase()}
             </h2>
-
             <p className="font-semibold text-gray-600">
               {age && <span>{age}</span>}
               {gender && <span>{"," + gender}</span>}
             </p>
-
             <p className="font-semibold text-gray-600">{skills}</p>
             <p className="font-semibold text-gray-600 break-words">{about}</p>
-            <div className="card-actions justify-between">
-              <button
-                className="btn btn-secondary"
-                onClick={() => handleClick("interested", _id)}
-              >
-                Interested
-              </button>
-              <button
-                className="btn btn-primary"
-                onClick={() => handleClick("ignored", _id)}
-              >
-                Ignored
-              </button>
-            </div>
+            {_id ? (
+              <div className="card-actions justify-between">
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => handleClick("interested", _id)}
+                >
+                  Interested
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleClick("ignored", _id)}
+                >
+                  Ignored
+                </button>
+              </div>
+            ) : (
+              <div className="w-full flex justify-between">
+                <button className="btn btn-secondary w-1/3" disabled="true">
+                  Interested
+                </button>
+                <button className="btn btn-primary w-1/3" disabled="true">
+                  Ignored
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </>
