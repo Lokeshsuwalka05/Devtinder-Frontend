@@ -7,19 +7,20 @@ import { addConnections } from "../features/connections/connectionSlice";
 const Connections = () => {
   const dispatch = useDispatch();
   const connections = useSelector((store) => store.connections);
-  const getConnections = async () => {
-    try {
-      const res = await axios.get(BASE_URL + "/user/connections", {
-        withCredentials: true,
-      });
-      dispatch(addConnections(res?.data?.connections));
-    } catch (e) {
-      console.error(e);
-    }
-  };
+
   useEffect(() => {
+    const getConnections = async () => {
+      try {
+        const res = await axios.get(BASE_URL + "/user/connections", {
+          withCredentials: true,
+        });
+        dispatch(addConnections(res?.data?.connections));
+      } catch (e) {
+        console.error(e);
+      }
+    };
     getConnections();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
