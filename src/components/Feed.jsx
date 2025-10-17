@@ -13,39 +13,38 @@ const Feed = () => {
   const limit = 5;
   const pageRef = useRef(0);
 
-  const getFeed = async () => {
-    if (isLoading || !hasMore) return;
-
-    try {
-      setIsLoading(true);
-      pageRef.current += 1;
-      const res = await axios.get(
-        `${BASE_URL}/feed?page=${pageRef.current}&limit=${limit}`,
-        {
-          withCredentials: true,
-        }
-      );
-      const users = res?.data?.feedOfUser || [];
-
-      if (users.length === 0) {
-        setHasMore(false);
-        return;
-      }
-
-      dispatch(addFeed(users));
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   // Initial load - only when feed is null/empty and we have more data
   useEffect(() => {
+    const getFeed = async () => {
+      if (isLoading || !hasMore) return;
+
+      try {
+        setIsLoading(true);
+        pageRef.current += 1;
+        const res = await axios.get(
+          `${BASE_URL}/feed?page=${pageRef.current}&limit=${limit}`,
+          {
+            withCredentials: true,
+          }
+        );
+        const users = res?.data?.feedOfUser || [];
+
+        if (users.length === 0) {
+          setHasMore(false);
+          return;
+        }
+
+        dispatch(addFeed(users));
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsLoading(false);
+      }
+    };
     if ((feed == null || feed.length === 0) && hasMore && !isLoading) {
       getFeed();
     }
-  }, [feed]);
+  }, [feed, hasMore, isLoading, dispatch]);
 
   // No more data and feed is empty
   if (!hasMore && (!feed || feed.length === 0)) {
