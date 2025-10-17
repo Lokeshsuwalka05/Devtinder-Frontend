@@ -10,16 +10,6 @@ import toast from "react-hot-toast";
 const RequestReceived = () => {
   const dispatch = useDispatch();
   const requests = useSelector((store) => store.requests);
-  const fetchRequests = async () => {
-    try {
-      const res = await axios.get(BASE_URL + "/user/request/received", {
-        withCredentials: true,
-      });
-      dispatch(addRequests(res?.data?.users));
-    } catch (e) {
-      console.error(e);
-    }
-  };
   const requestReview = async (status, id) => {
     try {
       await axios.post(
@@ -34,8 +24,18 @@ const RequestReceived = () => {
     }
   };
   useEffect(() => {
+    const fetchRequests = async () => {
+      try {
+        const res = await axios.get(BASE_URL + "/user/request/received", {
+          withCredentials: true,
+        });
+        dispatch(addRequests(res?.data?.users));
+      } catch (e) {
+        console.error(e);
+      }
+    };
     fetchRequests();
-  }, []);
+  }, [dispatch]);
   return (
     <ul className="list bg-base-100 rounded-box shadow-md w-1/2 m-auto">
       <li className="p-4 pb-2 text-xs opacity-60 tracking-wide text-center">
