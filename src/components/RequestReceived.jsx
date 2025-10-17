@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BASE_URL } from "../utills/constants.js";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 const RequestReceived = () => {
   const dispatch = useDispatch();
   const requests = useSelector((store) => store.requests);
+  const [loading, setLoading] = useState(true);
   const requestReview = async (status, id) => {
     try {
       await axios.post(
@@ -30,12 +31,20 @@ const RequestReceived = () => {
           withCredentials: true,
         });
         dispatch(addRequests(res?.data?.users));
+        setLoading(false);
       } catch (e) {
         console.error(e);
       }
     };
     fetchRequests();
   }, [dispatch]);
+  if (loading) {
+    return (
+      <div className="flex justify-center mt-24">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+  }
   return (
     <ul className="list bg-base-100 rounded-box shadow-md w-1/2 m-auto">
       <li className="p-4 pb-2 text-xs opacity-60 tracking-wide text-center">

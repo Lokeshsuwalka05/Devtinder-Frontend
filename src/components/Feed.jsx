@@ -55,11 +55,13 @@ const Feed = () => {
 
   return (
     <div className="mb-28">
-      <p className="text-center text-gray-800 font-medium mb-6 text-xl">
-        Let's connect with awesome developers
-      </p>
       {feed && feed.length > 0 ? (
-        <UserCard key={feed[0]._id} user={feed[0]} />
+        <>
+          <p className="text-center text-gray-800 font-medium mb-6 text-xl">
+            Let's connect with awesome developers
+          </p>
+          <UserCard key={feed[0]._id} user={feed[0]} />
+        </>
       ) : (
         <div className="flex justify-center mt-24">
           <span className="loading loading-spinner loading-xl"></span>

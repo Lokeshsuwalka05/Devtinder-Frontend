@@ -1,13 +1,13 @@
 import axios from "axios";
 import { BASE_URL } from "../utills/constants";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../features/connections/connectionSlice";
 
 const Connections = () => {
   const dispatch = useDispatch();
   const connections = useSelector((store) => store.connections);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const getConnections = async () => {
       try {
@@ -15,13 +15,20 @@ const Connections = () => {
           withCredentials: true,
         });
         dispatch(addConnections(res?.data?.connections));
+        setLoading(false);
       } catch (e) {
         console.error(e);
       }
     };
     getConnections();
   }, [dispatch]);
-
+  if (loading) {
+    return (
+      <div className="flex justify-center mt-24">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+  }
   return (
     <>
       <ul className="list bg-base-100 rounded-box shadow-md w-1/2 m-auto pb-0 mt-7 mb-24">
