@@ -32,7 +32,14 @@ const Feed = () => {
   }, [dispatch]);
 
   // No more data and feed is empty
-  if (!feed || feed.length === 0) {
+  if (!feed) {
+    return (
+      <div className="flex justify-center mt-24">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+  }
+  if (feed.length === 0) {
     return (
       <h1 className="text-center mt-10 text-xl font-semibold">No User Found</h1>
     );
