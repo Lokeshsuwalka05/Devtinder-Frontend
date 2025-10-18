@@ -7,7 +7,7 @@ import {
   removeRequest,
 } from "../features/requests/requestSlice.js";
 import toast from "react-hot-toast";
-const RequestReceived = () => {
+const RequestReceived_temp = () => {
   const dispatch = useDispatch();
   const requests = useSelector((store) => store.requests);
   const [loading, setLoading] = useState(true);
@@ -84,4 +84,4 @@ const RequestReceived = () => {
     </ul>
   );
 };
-export default RequestReceived;
+export default RequestReceived_temp;

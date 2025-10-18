@@ -7,7 +7,7 @@ import Feed from "./components/Feed";
 import Profile from "./components/Profile";
 import { Toaster } from "react-hot-toast";
 import Connections from "./components/Connections";
-import RequestReceived from "./components/RequestReceived";
+import RequestReceived from "./components/RequestReceived_temp";
 const App = () => {
   return (
     <>
