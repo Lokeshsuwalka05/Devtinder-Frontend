@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect } from "react";
 import { BASE_URL } from "../utills/constants";
 import axios from "axios";
 import UserCard from "./UserCard";
@@ -6,48 +6,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../features/feed/feedSlice";
 
 const Feed = () => {
-  const [hasMore, setHasMore] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
   const feed = useSelector((store) => store.feed);
   const dispatch = useDispatch();
-  const limit = 5;
-  const pageRef = useRef(0);
 
   // Initial load - only when feed is null/empty and we have more data
   useEffect(() => {
     const getFeed = async () => {
-      if (isLoading || !hasMore) return;
-
       try {
-        setIsLoading(true);
-        pageRef.current += 1;
-        const res = await axios.get(
-          `${BASE_URL}/feed?page=${pageRef.current}&limit=${limit}`,
-          {
-            withCredentials: true,
-          }
-        );
+        const res = await axios.get(`${BASE_URL}/feed`, {
+          withCredentials: true,
+        });
         const users = res?.data?.feedOfUser || [];
 
         if (users.length === 0) {
-          setHasMore(false);
           return;
         }
 
         dispatch(addFeed(users));
       } catch (e) {
         console.error(e);
-      } finally {
-        setIsLoading(false);
       }
     };
-    if ((feed == null || feed.length === 0) && hasMore && !isLoading) {
-      getFeed();
-    }
-  }, [feed, hasMore, isLoading, dispatch]);
+
+    getFeed();
+  }, [dispatch]);
 
   // No more data and feed is empty
-  if (!hasMore && (!feed || feed.length === 0)) {
+  if (!feed || feed.length === 0) {
     return (
       <h1 className="text-center mt-10 text-xl font-semibold">No User Found</h1>
     );
