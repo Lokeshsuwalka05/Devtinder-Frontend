@@ -59,7 +59,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="card w-96 bg-base-100 card-md shadow-sm m-auto top-5 mb-44">
+    <div className="card w-96 bg-base-100 card-md shadow-sm m-auto top-5 mb-28">
       <div className="card-body">
         <h2 className="card-title">{isLoginForm ? "Login" : "Sign Up"}</h2>
         <fieldset className="fieldset">
