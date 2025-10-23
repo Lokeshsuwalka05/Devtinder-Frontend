@@ -7,6 +7,7 @@ import {
   removeRequest,
 } from "../features/requests/requestSlice.js";
 import toast from "react-hot-toast";
+import Loader from "./Loader.jsx";
 const RequestReceived = () => {
   const dispatch = useDispatch();
   const requests = useSelector((store) => store.requests);
@@ -39,14 +40,10 @@ const RequestReceived = () => {
     fetchRequests();
   }, [dispatch]);
   if (loading) {
-    return (
-      <div className="flex justify-center mt-24">
-        <span className="loading loading-spinner loading-xl"></span>
-      </div>
-    );
+    return <Loader />;
   }
   return (
-    <ul className="list bg-base-100 rounded-box shadow-md w-1/2 m-auto">
+    <ul className="list bg-base-100 rounded-box shadow-md w-1/2 m-auto mb-24 mt-4">
       <li className="p-4 pb-2 text-xs opacity-60 tracking-wide text-center">
         Request Received
       </li>
@@ -62,8 +59,8 @@ const RequestReceived = () => {
               <div>
                 <div>{firstName + " " + lastName}</div>
                 <div className="text-xs uppercase font-semibold opacity-60">
-                  {age && <span>age</span>}
-                  {gender && <span> "," + gender</span>}
+                  {age && <span>{age}</span>}
+                  {gender && <span>,{gender}</span>}
                 </div>
               </div>
               <button
