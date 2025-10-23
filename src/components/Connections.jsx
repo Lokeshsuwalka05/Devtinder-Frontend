@@ -3,6 +3,7 @@ import { BASE_URL } from "../utills/constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../features/connections/connectionSlice";
+import Loader from "./Loader";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -23,11 +24,7 @@ const Connections = () => {
     getConnections();
   }, [dispatch]);
   if (loading) {
-    return (
-      <div className="flex justify-center mt-24">
-        <span className="loading loading-spinner loading-xl"></span>
-      </div>
-    );
+    return <Loader />;
   }
   return (
     <>
