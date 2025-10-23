@@ -23,7 +23,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm fixed z-1000">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">
           Devtinder
@@ -32,7 +32,13 @@ const Navbar = () => {
 
       {user && (
         <div className="flex gap-2 items-center">
-          <p>Welcome,{user?.firstName}</p>
+          <p className="font-semibold">
+            Welcome,
+            {user?.firstName
+              ? user.firstName.charAt(0).toUpperCase() +
+                user.firstName.slice(1).toLowerCase()
+              : ""}
+          </p>
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
