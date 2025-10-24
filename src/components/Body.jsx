@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utills/constants";
 import { useNavigate } from "react-router";
@@ -11,7 +11,6 @@ import { addUser } from "../features/user/userSlice";
 const Body = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchedUser = async () => {
@@ -26,14 +25,11 @@ const Body = () => {
           navigate("/login");
         }
         console.error(err);
-      } finally {
-        setLoading(false);
       }
     };
     fetchedUser();
   }, [dispatch, navigate]);
 
-  if (loading) return null;
   return (
     <>
       <Navbar />
