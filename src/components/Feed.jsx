@@ -16,7 +16,6 @@ const Feed = () => {
       const res = await axios.get(`${BASE_URL}/feed`, {
         withCredentials: true,
       });
-      console.log(res);
       const users = res?.data?.feedOfUser || [];
       if (users.length === 0) {
         setLoading(false);
