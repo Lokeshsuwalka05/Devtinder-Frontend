@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../utills/constants";
 import axios from "axios";
@@ -52,7 +53,7 @@ const Feed = () => {
   }
 
   return (
-    <div className="mb-32">
+    <div className="mb-20">
       <p className="text-center text-gray-800 font-medium mb-6 text-xl">
         Let's connect with awesome developers
       </p>
