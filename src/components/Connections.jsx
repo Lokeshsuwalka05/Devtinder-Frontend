@@ -28,7 +28,7 @@ const Connections = () => {
   }
   return (
     <>
-      <ul className="list bg-base-100 rounded-box shadow-md w-1/2 m-auto pb-0 mt-7 mb-24">
+      <ul className="list bg-base-100 rounded-box shadow-md md:w-1/2 w-full m-auto pb-0 mt-7 mb-36 md:mb-24">
         <li className="p-4 pb-2 text-xs opacity-60 tracking-wide m-auto">
           Connections
         </li>

@@ -43,7 +43,7 @@ const RequestReceived = () => {
     return <Loader />;
   }
   return (
-    <ul className="list bg-base-100 rounded-box shadow-md w-1/2 m-auto mb-24 mt-4">
+    <ul className="list bg-base-100 rounded-box shadow-sm w-full md:w-1/2 md:m-auto mb-36 md:mb-24 mt-4">
       <li className="p-4 pb-2 text-xs opacity-60 tracking-wide text-center">
         Request Received
       </li>
@@ -52,13 +52,15 @@ const RequestReceived = () => {
           const { firstName, lastName, age, gender, photoUrl, _id } =
             request.fromUserId;
           return (
-            <li className="list-row" key={_id}>
+            <li className="list-row " key={_id}>
               <div>
                 <img className="size-10 rounded-box" src={photoUrl} />
               </div>
               <div>
-                <div>{firstName + " " + lastName}</div>
-                <div className="text-xs uppercase font-semibold opacity-60">
+                <div className="text-xs  font-semibold ">
+                  {firstName + " " + lastName}
+                </div>
+                <div className="text-xs uppercase font-light opacity-60">
                   {age && <span>{age}</span>}
                   {gender && <span>,{gender}</span>}
                 </div>

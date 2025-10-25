@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../features/user/userSlice";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
+import down_arrow from "../assets/down_arrow.png";
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
@@ -41,14 +42,14 @@ const EditProfile = ({ user }) => {
   };
 
   return (
-    <div className="mb-32">
-      <p className="text-center text-gray-800 font-medium mb-6 text-xl">
+    <div className="mb-36 md:mb-32">
+      <p className="text-center  text-gray-800 font-medium mb-6  text-[15px] md:text-xl">
         Please update your profile first to connect with other awesome
         developers🧑‍💻!
       </p>
-      <div className="grid grid-cols-[2fr_1fr_2fr] mb-12">
-        <div className="card w-96 bg-base-300 card-md shadow-sm ml-5 top-5">
-          <div className="card-body">
+      <div className="grid md:grid-cols-[2fr_1fr_2fr] mb-12 md:ml-5 md:mr-5 ">
+        <div className="card w-80 md:w-96 bg-base-300 card-md shadow-sm m-auto top-5">
+          <div className="card-body ">
             <h2 className="card-title">Edit Profile</h2>
             <div className="flex gap-4">
               <fieldset className="fieldset w-6/12">
@@ -136,10 +137,11 @@ const EditProfile = ({ user }) => {
           </div>
         </div>
         <div className="my-auto mx-auto">
-          <img src={curved_arrow} className="w-32"></img>
+          <img src={curved_arrow} className="w-32 hidden md:block"></img>
+          <img src={down_arrow} className="w-32 block md:hidden mt-4"></img>
         </div>
         <div className="">
-          <p className="text-center">
+          <p className="text-center font-light">
             Here’s how your profile looks to other developers
           </p>
           <UserCard

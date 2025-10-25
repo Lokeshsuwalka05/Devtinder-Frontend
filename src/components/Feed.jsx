@@ -52,7 +52,7 @@ const Feed = () => {
   }
 
   return (
-    <div className="mb-20">
+    <div className="md:mb-20 mb-36">
       <p className="text-center text-gray-800 font-medium mb-6 text-xl">
         Let's connect with awesome developers
       </p>
