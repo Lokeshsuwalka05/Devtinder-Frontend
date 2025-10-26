@@ -92,12 +92,12 @@ const UserCard = ({ user }) => {
           <h2 className="card-title">
             {firstName.toUpperCase() + " " + lastName.toUpperCase()}
           </h2>
-          <p className="font-semibold text-gray-600">
+          <p className="font-semibold">
             {age && <span>{age}</span>}
             {gender && <span>{"," + gender}</span>}
           </p>
-          <p className="font-semibold text-gray-600">{skills}</p>
-          <p className="font-semibold text-gray-600 break-words">{about}</p>
+          <p className="font-semibold">{skills}</p>
+          <p className="font-semibold break-words">{about}</p>
 
           {_id ? (
             <div className="card-actions justify-between">

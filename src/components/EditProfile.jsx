@@ -43,7 +43,7 @@ const EditProfile = ({ user }) => {
 
   return (
     <div className="mb-36 md:mb-32">
-      <p className="text-center  text-gray-800 font-medium mb-6  text-[15px] md:text-xl">
+      <p className="text-center font-medium mb-6  text-[15px] md:text-xl">
         Please update your profile first to connect with other awesome
         developers🧑‍💻!
       </p>
