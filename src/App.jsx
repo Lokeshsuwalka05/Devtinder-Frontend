@@ -8,23 +8,26 @@ import Profile from "./components/Profile";
 import { Toaster } from "react-hot-toast";
 import Connections from "./components/Connections";
 import RequestReceived from "./components/RequestReceived";
+import { ThemeProvider } from "./context/ThemeProvider";
 const App = () => {
   return (
     <>
       <Toaster position="top-right" />
-      <Provider store={appStore}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Body />}>
-              <Route path="/" element={<Feed />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/connections" element={<Connections />} />
-              <Route path="/requests" element={<RequestReceived />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </Provider>
+      <ThemeProvider>
+        <Provider store={appStore}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Body />}>
+                <Route path="/" element={<Feed />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/connections" element={<Connections />} />
+                <Route path="/requests" element={<RequestReceived />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </Provider>
+      </ThemeProvider>
     </>
   );
 };
