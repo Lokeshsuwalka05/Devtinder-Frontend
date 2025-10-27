@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  console.log("hello");
   return (
     <label className="flex cursor-pointer gap-2" onClick={toggleTheme}>
       {theme === "light" ? (

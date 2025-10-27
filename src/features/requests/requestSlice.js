@@ -8,7 +8,6 @@ const requestSlice = createSlice({
       return action.payload;
     },
     removeRequest: (state, action) => {
-      console.log("hello");
       const id = action.payload;
       const newArray = state.filter((request) => {
         if (request._id !== id) {
