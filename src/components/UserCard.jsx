@@ -58,7 +58,7 @@ const UserCard = ({ user }) => {
               whileTap: { scale: 1.05 },
             }
           : {})}
-        className="card bg-base-300 w-72 shadow-sm m-auto mt-5 cursor-grab relative overflow-hidden"
+        className="card bg-base-300 w-72 shadow-2xl m-auto mt-5 cursor-grab relative overflow-hidden"
       >
         {/* ❤️ Heart animation when swiped right */}
         {swipeDirection === "right" && (
