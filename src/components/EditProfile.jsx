@@ -8,6 +8,8 @@ import { addUser } from "../features/user/userSlice";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import down_arrow from "../assets/down_arrow.png";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
@@ -35,14 +37,19 @@ const EditProfile = ({ user }) => {
       );
       dispatch(addUser(res?.data?.updatedUserData));
       toast.success(res?.data?.message);
-      navigate("/");
+      navigate("/feed");
     } catch (e) {
       console.error(e);
     }
   };
 
   return (
-    <div className="mb-36 md:mb-32">
+    <motion.div
+      className="mb-36 md:mb-32 relative top-14"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3 }}
+    >
       <p className="text-center font-medium mb-6  text-[15px] md:text-xl">
         Please update your profile first to connect with other awesome
         developers🧑‍💻!
@@ -130,7 +137,10 @@ const EditProfile = ({ user }) => {
               ></textarea>
             </fieldset>
             <div className="justify-center card-actions">
-              <button className="btn btn-primary" onClick={handleUpdate}>
+              <button
+                className="btn btn-outline btn-primary"
+                onClick={handleUpdate}
+              >
                 Update Profile
               </button>
             </div>
@@ -149,7 +159,7 @@ const EditProfile = ({ user }) => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default EditProfile;

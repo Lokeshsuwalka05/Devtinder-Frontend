@@ -59,6 +59,9 @@ const UserCard = ({ user }) => {
             }
           : {})}
         className="card bg-base-300 w-72 shadow-2xl m-auto mt-5 cursor-grab relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
       >
         {/* ❤️ Heart animation when swiped right */}
         {swipeDirection === "right" && (
@@ -102,13 +105,13 @@ const UserCard = ({ user }) => {
           {_id ? (
             <div className="card-actions justify-between">
               <button
-                className="btn btn-primary w-1/3"
+                className="btn btn-outline btn-primary w-1/3"
                 onClick={() => handleClick("ignored", _id)}
               >
                 Ignored
               </button>
               <button
-                className="btn btn-secondary w-1/3"
+                className="btn btn-outline btn-secondary w-1/3"
                 onClick={() => handleClick("interested", _id)}
               >
                 Interested

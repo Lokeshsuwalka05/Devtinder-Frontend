@@ -9,6 +9,10 @@ import { Toaster } from "react-hot-toast";
 import Connections from "./components/Connections";
 import RequestReceived from "./components/RequestReceived";
 import { ThemeProvider } from "./context/ThemeProvider";
+import Home from "./components/Home";
+import TermOfUse from "./components/TermOfUse";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import RefundAndCancellation from "./components/RefundAndCancellation";
 const App = () => {
   return (
     <>
@@ -18,12 +22,19 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Body />}>
-                <Route path="/" element={<Feed />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/feed" element={<Feed />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/connections" element={<Connections />} />
                 <Route path="/requests" element={<RequestReceived />} />
               </Route>
+              <Route path="/termsOfUse" element={<TermOfUse />} />
+              <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+              <Route
+                path="/refundAndCancellation"
+                element={<RefundAndCancellation />}
+              />
             </Routes>
           </BrowserRouter>
         </Provider>

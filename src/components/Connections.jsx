@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../features/connections/connectionSlice";
 import Loader from "./Loader";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -28,7 +30,12 @@ const Connections = () => {
   }
   return (
     <>
-      <ul className="list bg-base-100 rounded-box shadow-md md:w-1/2 w-full m-auto pb-0 mt-7 mb-36 md:mb-24">
+      <motion.ul
+        className="list bg-base-100 rounded-box shadow-md md:w-1/2 w-full m-auto pb-0 mt-7 mb-36 md:mb-24 relative top-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
         <li className="p-4 pb-2 text-xs opacity-60 tracking-wide m-auto">
           Connections
         </li>
@@ -51,7 +58,7 @@ const Connections = () => {
               </li>
             );
           })}
-      </ul>
+      </motion.ul>
     </>
   );
 };

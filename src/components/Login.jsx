@@ -5,6 +5,8 @@ import { addUser } from "../features/user/userSlice";
 import { useNavigate } from "react-router";
 import { BASE_URL } from "../utills/constants";
 import toast from "react-hot-toast";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 const Login = () => {
   const [emailId, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +33,7 @@ const Login = () => {
         }
       );
       dispatch(addUser(response.data.loggedInUser));
-      navigate("/");
+      navigate("/feed");
       toast.success(response.data.message, { id: "loginToast" });
     } catch (err) {
       const message = err.response.data || "Something went wrong!";
@@ -59,7 +61,12 @@ const Login = () => {
     }
   };
   return (
-    <div className="card  w-80 md:w-96 bg-base-100 card-md shadow-2xl m-auto top-5 md:mb-28 mb-44">
+    <motion.div
+      className="card  w-80 md:w-96 bg-base-100 card-md shadow-2xl m-auto top-12 md:mb-28 mb-44"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3 }}
+    >
       <div className="card-body">
         <h2 className="card-title">{isLoginForm ? "Login" : "Sign Up"}</h2>
         <fieldset className="fieldset">
@@ -134,7 +141,7 @@ const Login = () => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default Login;

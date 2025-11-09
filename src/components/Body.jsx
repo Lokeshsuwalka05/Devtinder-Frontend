@@ -7,6 +7,7 @@ import { BASE_URL } from "../utills/constants";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { addUser } from "../features/user/userSlice";
+import Home from "./Home";
 
 const Body = () => {
   const navigate = useNavigate();
@@ -20,10 +21,6 @@ const Body = () => {
         });
         dispatch(addUser(userData.data.user));
       } catch (err) {
-        console.log(err);
-        if (err?.response?.status === 401) {
-          navigate("/login");
-        }
         console.error(err);
       }
     };
@@ -32,11 +29,13 @@ const Body = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="pt-16">
-        <Outlet />
+      <div className="flex flex-col min-h-[300vh] md:min-h-[160vh]">
+        <Navbar />
+        <div className="pt-16 flex-1">
+          <Outlet />
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };

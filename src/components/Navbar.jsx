@@ -24,17 +24,35 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="navbar bg-base-100 shadow-sm fixed z-1000">
+    <div className="navbar md:w-6/12 bg-base-200 shadow-sm fixed z-1000 rounded-2xl mt-3 md:left-1/4  ">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
-          Devtinder
-        </Link>
+        {user ? (
+          <Link to="/feed" className="btn btn-ghost text-xl">
+            Devtinder
+          </Link>
+        ) : (
+          <Link to="/" className="btn btn-ghost text-xl">
+            Devtinder
+          </Link>
+        )}
       </div>
       <div className="flex-1 flex justify-center">
         <ThemeToggle />
       </div>
-      <div className="flex-1 flex justify-end items-center gap-2">
-        {user && (
+      {!user && (
+        <div className="flex-1 flex justify-end">
+          <button
+            className="btn btn-neutral"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </button>
+        </div>
+      )}
+      {user && (
+        <div className="flex-1 flex justify-end items-center gap-2">
           <div className="flex gap-2 items-center">
             <p className="font-semibold">
               Welcome,
@@ -75,8 +93,8 @@ const Navbar = () => {
               </ul>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

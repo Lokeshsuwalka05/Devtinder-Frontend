@@ -52,8 +52,8 @@ const Feed = () => {
   }
 
   return (
-    <div className="md:mb-20 mb-36">
-      <p className="text-center font-medium mb-6 text-xl">
+    <div className="md:mb-20 mb-36 relative top-12">
+      <p className="text-center font-medium mb-6 text-xl ">
         Let's connect with awesome developers
       </p>
       {feed && <UserCard key={feed[0]._id} user={feed[0]} />}
