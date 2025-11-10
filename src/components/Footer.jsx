@@ -76,6 +76,28 @@ const Footer = () => {
                 Lokesh Suwalka
               </a>
             </span>
+            <br />
+            <span>
+              📞 Phone:{" "}
+              <a
+                href="tel:+919549990458"
+                target="_blank"
+                className="text-blue-600 hover:text-blue-800"
+              >
+                +91-9549990458
+              </a>
+            </span>
+            <br />
+            <span>
+              📍 Location:{" "}
+              <a
+                href="tel:+919549990458"
+                target="_blank"
+                className="text-blue-600 hover:text-blue-800"
+              >
+                Bhilwara, Rajasthan, India
+              </a>
+            </span>
           </p>
         </aside>
 
