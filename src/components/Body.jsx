@@ -29,7 +29,7 @@ const Body = () => {
 
   return (
     <>
-      <div className="flex flex-col min-h-[300vh] md:min-h-[160vh]">
+      <div className="flex flex-col min-h-[150vh] md:min-h-[160vh]">
         <Navbar />
         <div className="pt-16 flex-1">
           <Outlet />
