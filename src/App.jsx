@@ -13,6 +13,7 @@ import Home from "./components/Home";
 import TermOfUse from "./components/TermOfUse";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import RefundAndCancellation from "./components/RefundAndCancellation";
+import Contact from "./components/Contact";
 const App = () => {
   return (
     <>
@@ -31,6 +32,7 @@ const App = () => {
               </Route>
               <Route path="/termsOfUse" element={<TermOfUse />} />
               <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+              <Route path="/contact" element={<Contact />} />
               <Route
                 path="/refundAndCancellation"
                 element={<RefundAndCancellation />}
