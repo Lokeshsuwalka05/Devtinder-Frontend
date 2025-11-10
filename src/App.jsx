@@ -14,6 +14,8 @@ import TermOfUse from "./components/TermOfUse";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import RefundAndCancellation from "./components/RefundAndCancellation";
 import Contact from "./components/Contact";
+import Disclaimer from "./components/Disclaimar";
+import ShippingAndDelivery from "./components/ShippingAndDelivery";
 const App = () => {
   return (
     <>
@@ -36,6 +38,11 @@ const App = () => {
               <Route
                 path="/refundAndCancellation"
                 element={<RefundAndCancellation />}
+              />
+              <Route path="/disclaimar" element={<Disclaimer />} />
+              <Route
+                path="/shippingAndDelivery"
+                element={<ShippingAndDelivery />}
               />
             </Routes>
           </BrowserRouter>

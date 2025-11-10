@@ -23,11 +23,17 @@ const Footer = () => {
         </nav>
         <nav>
           <h6 className="footer-title">Legal</h6>
+          <Link to="/privacyPolicy" className="link link-hover">
+            Privacy policy
+          </Link>
           <Link to="/termsOfUse" className="link link-hover">
             Terms of use
           </Link>
-          <Link to="/privacyPolicy" className="link link-hover">
-            Privacy policy
+          <Link to="/disclaimar" className="link link-hover">
+            Disclaimar
+          </Link>
+          <Link to="/shippingAndDelivery" className="link link-hover">
+            Shipping & Delivery Policy
           </Link>
           <Link to="/refundAndCancellation" className="link link-hover">
             Refund & Cancellation Policy
