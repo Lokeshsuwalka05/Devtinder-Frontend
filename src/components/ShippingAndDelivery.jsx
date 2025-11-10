@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 const ShippingAndDelivery = () => {
   return (
     <motion.div
@@ -71,12 +72,12 @@ const ShippingAndDelivery = () => {
           </h2>
           <p>
             Please refer to our{" "}
-            <a
-              href="/refundAndCancellation"
+            <Link
+              to="/refundAndCancellation"
               className="text-blue-600 underline hover:text-blue-800"
             >
               Refund and Cancellation Policy
-            </a>{" "}
+            </Link>{" "}
             for more details on refund eligibility and procedures.
           </p>
         </section>
