@@ -132,10 +132,10 @@ const UserCard = ({ user }) => {
             ) : (
               <div className="w-full flex justify-between">
                 <button className="btn btn-secondary w-1/3" disabled>
-                  Interested
+                  Ignored
                 </button>
                 <button className="btn btn-primary w-1/3" disabled>
-                  Ignored
+                  Interested
                 </button>
               </div>
             )}
