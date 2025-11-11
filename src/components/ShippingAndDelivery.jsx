@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { Link } from "react-router";
+
 const ShippingAndDelivery = () => {
   return (
     <motion.div
@@ -33,6 +34,10 @@ const ShippingAndDelivery = () => {
             Once the payment for a premium membership or digital feature is
             successfully completed, your account will be upgraded instantly, or
             within a few minutes, depending on system processing time.
+          </p>
+          <p className="mt-2">
+            Shipping Time: Since services are digital, activation usually occurs
+            <strong> within 1–5 minutes</strong> after payment confirmation.
           </p>
         </section>
 
@@ -88,15 +93,29 @@ const ShippingAndDelivery = () => {
           <h2 className="text-2xl font-semibold mb-3">5. Contact Us</h2>
           <p>
             For any queries related to service delivery or payment confirmation,
-            please contact us at{" "}
-            <a
-              href="mailto:support@thedevtinder.live"
-              className="text-blue-600 underline hover:text-blue-800"
-            >
-              support@thedevtinder.live
-            </a>
-            .
+            please contact us:
           </p>
+          <ul className="mt-2 list-disc list-inside">
+            <li>
+              📧 Email:{" "}
+              <a
+                href="mailto:support@thedevtinder.live"
+                className="text-blue-600 underline hover:text-blue-800"
+              >
+                support@thedevtinder.live
+              </a>
+            </li>
+            <li>
+              📞 Phone:{" "}
+              <a
+                href="tel:+919549990458"
+                className="text-blue-600 underline hover:text-blue-800"
+              >
+                +91-95499-90458
+              </a>{" "}
+              {/* Replace with actual support number */}
+            </li>
+          </ul>
         </section>
       </div>
 
