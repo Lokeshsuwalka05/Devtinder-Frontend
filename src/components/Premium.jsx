@@ -2,7 +2,44 @@
 import { motion } from "framer-motion";
 import gold_icon from "../assets/coin.png";
 import silver_icon from "../assets/silver-badge.png";
+import axios from "axios";
+import { BASE_URL } from "../utills/constants";
 const Premium = () => {
+  const handleBuy = async (type) => {
+    try {
+      const order = await axios.post(
+        BASE_URL + "/create/order",
+        { type },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(order);
+      const { info, key } = order.data;
+      const { firstName, lastName, currency, order_id, notes, amount } = info;
+      const options = {
+        key, // Replace with your Razorpay key_id
+        amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency,
+        name: `${firstName} ${lastName}`,
+        description: "Test Transaction",
+        order_id, // This is the order_id created in the backend
+        // callback_url: "http://localhost:3000/payment-success", // Your success URL
+        prefill: {
+          name: `${notes.firstName} ${notes.lastName}`,
+          email: notes.emailId,
+          contact: "9999999999",
+        },
+        theme: {
+          color: "#F37254",
+        },
+      };
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <motion.div
       className="flex md:w-[90%] w-full m-auto mb-36 min-h-48 md:mb-32 relative top-20 "
@@ -21,7 +58,9 @@ const Premium = () => {
           <li> - Blue Tick</li>
           <li> - 3 months</li>
         </ul>
-        <button className="btn btn-dash">Buy Silver</button>
+        <button className="btn btn-dash" onClick={() => handleBuy("Silver")}>
+          Buy Silver
+        </button>
       </div>
       <div className="divider divider-horizontal w-[20%]">OR</div>
       <div className="card bg-base-200 rounded-box w-[40%] grid grow place-items-center p-5">
@@ -35,7 +74,12 @@ const Premium = () => {
           <li> - Blue Tick</li>
           <li> - 6 months</li>
         </ul>
-        <button className="btn btn-dash btn-warning">Buy Gold</button>
+        <button
+          className="btn btn-dash btn-warning"
+          onClick={() => handleBuy("Gold")}
+        >
+          Buy Gold
+        </button>
       </div>
     </motion.div>
   );
