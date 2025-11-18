@@ -57,7 +57,9 @@ const Premium = () => {
     }
   };
   return isUserPremium ? (
-    "You are already a premium user"
+    <h1 className="font-semibold text-center text-2xl relative top-28">
+      You are already a Premium User💙
+    </h1>
   ) : (
     <motion.div
       className="flex md:w-[90%] w-full m-auto mb-36 min-h-48 md:mb-32 relative top-20 "
