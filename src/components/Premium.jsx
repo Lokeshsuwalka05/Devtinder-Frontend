@@ -7,6 +7,7 @@ import { BASE_URL } from "../utills/constants";
 import { useEffect, useState } from "react";
 const Premium = () => {
   const [isUserPremium, setIsUserPremium] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     premiumVerify();
   }, []);
@@ -20,6 +21,8 @@ const Premium = () => {
       }
     } catch (e) {
       console.log(e);
+    } finally {
+      setIsLoading(false);
     }
   };
   const handleBuy = async (type) => {
@@ -56,6 +59,13 @@ const Premium = () => {
       console.log(err);
     }
   };
+  if (isLoading) {
+    return (
+      <h1 className="font-semibold text-center text-2xl relative top-28">
+        Checking your membership status...
+      </h1>
+    );
+  }
   return isUserPremium ? (
     <h1 className="font-semibold text-center text-2xl relative top-28">
       You are already a Premium User💙
