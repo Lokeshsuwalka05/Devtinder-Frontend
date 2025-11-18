@@ -16,14 +16,14 @@ const Premium = () => {
       );
       console.log(order);
       const { info, key } = order.data;
-      const { firstName, lastName, currency, order_id, notes, amount } = info;
+      const { firstName, lastName, currency, Order_id, notes, amount } = info;
       const options = {
         key, // Replace with your Razorpay key_id
         amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency,
         name: `${firstName} ${lastName}`,
         description: "Test Transaction",
-        order_id, // This is the order_id created in the backend
+        Order_id, // This is the order_id created in the backend
         // callback_url: "http://localhost:3000/payment-success", // Your success URL
         prefill: {
           name: `${notes.firstName} ${notes.lastName}`,
