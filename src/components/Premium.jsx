@@ -4,7 +4,24 @@ import gold_icon from "../assets/coin.png";
 import silver_icon from "../assets/silver-badge.png";
 import axios from "axios";
 import { BASE_URL } from "../utills/constants";
+import { useEffect, useState } from "react";
 const Premium = () => {
+  const [isUserPremium, setIsUserPremium] = useState(false);
+  useEffect(() => {
+    premiumVerify();
+  }, []);
+  const premiumVerify = async () => {
+    try {
+      const res = await axios.get(BASE_URL + "/premium/verify", {
+        withCredentials: true,
+      });
+      if (res?.data?.isPremium === true) {
+        setIsUserPremium(true);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
   const handleBuy = async (type) => {
     try {
       const order = await axios.post(
@@ -14,7 +31,6 @@ const Premium = () => {
           withCredentials: true,
         }
       );
-      console.log(order);
       const { info, key } = order.data;
       const { firstName, lastName, currency, Order_id, notes, amount } = info;
       const options = {
@@ -23,8 +39,7 @@ const Premium = () => {
         currency,
         name: `${firstName} ${lastName}`,
         description: "Test Transaction",
-        Order_id, // This is the order_id created in the backend
-        // callback_url: "http://localhost:3000/payment-success", // Your success URL
+        Order_id,
         prefill: {
           name: `${notes.firstName} ${notes.lastName}`,
           email: notes.emailId,
@@ -33,6 +48,7 @@ const Premium = () => {
         theme: {
           color: "#F37254",
         },
+        handler: premiumVerify,
       };
       const rzp = new window.Razorpay(options);
       rzp.open();
@@ -40,7 +56,9 @@ const Premium = () => {
       console.log(err);
     }
   };
-  return (
+  return isUserPremium ? (
+    "You are already a premium user"
+  ) : (
     <motion.div
       className="flex md:w-[90%] w-full m-auto mb-36 min-h-48 md:mb-32 relative top-20 "
       initial={{ opacity: 0 }}
