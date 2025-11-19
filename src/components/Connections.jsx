@@ -6,6 +6,7 @@ import { addConnections } from "../features/connections/connectionSlice";
 import Loader from "./Loader";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,8 @@ const Connections = () => {
 
         {connections &&
           connections.map((connection) => {
-            const { firstName, lastName, age, gender, photoUrl } = connection;
+            const { firstName, lastName, age, gender, photoUrl, _id } =
+              connection;
             return (
               <li className="list-row">
                 <div>
@@ -55,6 +57,9 @@ const Connections = () => {
                     {gender && <span>{"," + gender}</span>}
                   </div>
                 </div>
+                <Link to={`/chat/${_id}`}>
+                  <button className="btn btn-outline btn-info">Chat</button>
+                </Link>
               </li>
             );
           })}

@@ -17,6 +17,7 @@ import Contact from "./components/Contact";
 import Disclaimer from "./components/Disclaimar";
 import ShippingAndDelivery from "./components/ShippingAndDelivery";
 import Premium from "./components/Premium";
+import Chat from "./components/Chat";
 const App = () => {
   return (
     <>
@@ -33,6 +34,7 @@ const App = () => {
                 <Route path="/connections" element={<Connections />} />
                 <Route path="/requests" element={<RequestReceived />} />
                 <Route path="/premium" element={<Premium />} />
+                <Route path="/chat/:toUserId" element={<Chat />} />
               </Route>
               <Route path="/termsOfUse" element={<TermOfUse />} />
               <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
