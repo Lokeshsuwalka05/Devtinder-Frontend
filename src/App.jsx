@@ -34,7 +34,7 @@ const App = () => {
                 <Route path="/connections" element={<Connections />} />
                 <Route path="/requests" element={<RequestReceived />} />
                 <Route path="/premium" element={<Premium />} />
-                <Route path="/chat/:toUserId" element={<Chat />} />
+                <Route path="/chat/:targetUserId" element={<Chat />} />
               </Route>
               <Route path="/termsOfUse" element={<TermOfUse />} />
               <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
