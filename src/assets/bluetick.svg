@@ -1,0 +1,19 @@
+<svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    role="img"
+                  >
+                    <title>Verified</title>
+                    <circle cx="12" cy="12" r="11" fill="#1DA1F2" />
+                    <path
+                      d="M9.2 12.6l1.9 1.9 4.7-6.0"
+                      fill="none"
+                      stroke="#fff"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+</svg>

@@ -5,6 +5,7 @@ import axios from "axios";
 import { removeUser } from "../features/user/userSlice";
 import toast from "react-hot-toast";
 import ThemeToggle from "./ThemeToggle";
+import bluetick from "../assets/bluetick.svg";
 const Navbar = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -62,13 +63,24 @@ const Navbar = () => {
                 : ""}
             </p>
             <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img alt="User Photo" src={user?.photoUrl} />
+              <div className="relative inline-block">
+                {user?.isPremium && (
+                  <img
+                    src={bluetick}
+                    alt="verified"
+                    className="absolute top-0 right-0 rounded-full z-20"
+                  />
+                )}
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <img
+                    alt="User Photo"
+                    src={user?.photoUrl}
+                    className="rounded-full object-cover"
+                  />
                 </div>
               </div>
               <ul
