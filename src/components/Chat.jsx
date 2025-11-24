@@ -14,7 +14,6 @@ const Chat = () => {
   const user = useSelector((store) => store.user);
   const userId = user?._id;
   const messagesContainerRef = useRef(null);
-  console.log(messagesContainerRef);
   const fetchChat = async () => {
     try {
       const res = await axios.get(BASE_URL + "/chat/" + targetUserId, {
