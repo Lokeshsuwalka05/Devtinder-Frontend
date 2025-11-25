@@ -91,7 +91,7 @@ const Chat = () => {
         </motion.h1>
       </div>
       <motion.div
-        className=" w-[90%] md:w-[60%] mx-auto mt-10  rounded-xl shadow-lg overflow-hidden mb-36 md:mb-24"
+        className=" w-[90%] md:w-[60%] mx-auto mt-10  rounded-xl shadow-2xl overflow-hidden mb-36 md:mb-24"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
